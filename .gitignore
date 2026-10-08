@@ -1,0 +1,11 @@
+# Zugangsdaten – nie zu GitHub!
+api/config.php
+
+# Testdateien aus Übung 13 (SQL-Injection) – nie zu GitHub, nie auf einen Server
+api/unsicher.php
+
+# Sicherungskopien und Systemdateien
+*.mwb.bak
+*.bak
+.DS_Store
+Thumbs.db

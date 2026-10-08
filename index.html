@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mario's Pizza: handgemachte Pizza nach Familienrezept seit 1992, mitten in Brooklyn. Öffnungszeiten, Speisekarte, Anfahrt und Online-Bestellung.">
+    <meta name="keywords" content="Pizzeria, Pizza, Brooklyn, New York, Familienbetrieb, italienisch">
+    <meta name="author" content="IT-Azubis der TAI11 und TAI12">
+    <title>Mario's Pizza – Familienpizzeria in Brooklyn, New York</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="speisekarte.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header id="top">
+        <img src="images/logo.png" alt="Logo der Pizzeria" width="120">
+        <h1>Mario's Pizza</h1>
+        <p><em>Benvenuto! Handgemachte Pizza nach Familienrezept – mitten in Brooklyn</em></p>
+        <p id="status"></p>
+    </header>
+    <nav>
+        <button id="menu-button" type="button">☰ Menü</button>
+        <ul>
+            <li><a href="#speisekarte">Speisekarte</a></li>
+            <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
+            <li><a href="#anfahrt">Anfahrt</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="willkommen">
+            <h2>Willkommen</h2>
+            <div class="galerie">
+                <figure>
+                    <img src="images/ladenfront.jpg" alt="Ladenfront von Mario's Pizza an der Court Street in Brooklyn" width="600">
+                    <figcaption>Mario's Pizza an der Ecke Court Street / Montague Street</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/mario.jpg" alt="Mario mit einer frisch gebackenen Pizza" width="250">
+                    <figcaption>Mario – Besitzer und Pizzabäcker</figcaption>
+                </figure>
+            </div>
+            <p>Seit <strong>1992</strong> gibt es <strong>Mario's Pizza</strong> an der Ecke Court Street / Montague Street. Vor kurzem hat Mario die kleine Familienpizzeria übernommen – und backt weiter nach dem Rezept seiner Nonna: hausgemachter Teig, San-Marzano-Tomaten und Mozzarella aus Kampanien.</p>
+            <p>Ob im Gastraum, zum Mitnehmen oder bald auch online bestellt: <em>Buon appetito!</em></p>
+        </section>
+
+        <section id="speisekarte">
+            <h2>Speisekarte</h2>
+            <p>Unsere Pizzen sind 14 Zoll groß und handgemacht. Mit <strong>+</strong> legst du etwas auf deinen Bestellzettel.</p>
+            <div class="galerie">
+                <figure>
+                    <img src="images/pizza-margherita.jpg" alt="Pizza Margherita" width="250">
+                    <figcaption>Margherita</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/pizza-pepperoni.jpg" alt="Pizza Pepperoni" width="250">
+                    <figcaption>Pepperoni</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/pizza-funghi.jpg" alt="Pizza Funghi" width="250">
+                    <figcaption>Funghi</figcaption>
+                </figure>
+            </div>
+            <p id="quelle" class="hinweis"></p>
+            <div class="karte-layout">
+                <div id="speisekarte-liste">
+                    <noscript><p>Für Speisekarte und Bestellzettel bitte JavaScript einschalten – oder die Speisekarte als PDF ansehen.</p></noscript>
+                </div>
+                <aside class="zettel" aria-labelledby="zettel-titel">
+                    <h3 id="zettel-titel">Dein Bestellzettel</h3>
+                    <p id="zettel-leer">Noch nichts drauf – such dir links etwas aus.</p>
+                    <ul id="zettel-liste"></ul>
+                    <p class="zettel-summe">Summe <strong id="zettel-summe">0,00 $</strong></p>
+                    <form id="bestellformular">
+                        <h3>Wer bestellt?</h3>
+                        <p>
+                            <label for="vorname">Vorname *</label>
+                            <input type="text" id="vorname" name="vorname" required maxlength="40" autocomplete="given-name">
+                        </p>
+                        <p>
+                            <label for="nachname">Nachname *</label>
+                            <input type="text" id="nachname" name="nachname" required maxlength="40" autocomplete="family-name">
+                        </p>
+                        <p>
+                            <label for="telefon">Telefon</label>
+                            <input type="tel" id="telefon" name="telefon" maxlength="20" autocomplete="tel">
+                        </p>
+                        <p>
+                            <label for="lieferart">Lieferart</label>
+                            <select id="lieferart" name="lieferart">
+                                <option>Abholung</option>
+                                <option>Lieferung</option>
+                                <option>Vor Ort</option>
+                            </select>
+                        </p>
+                        <div id="adressfelder" hidden>
+                            <p>
+                                <label for="strasse">Straße und Nr. *</label>
+                                <input type="text" id="strasse" name="strasse" maxlength="60" autocomplete="street-address">
+                            </p>
+                            <p>
+                                <label for="plz">PLZ *</label>
+                                <input type="text" id="plz" name="plz" maxlength="10" autocomplete="postal-code">
+                            </p>
+                            <p>
+                                <label for="ort">Ort *</label>
+                                <input type="text" id="ort" name="ort" maxlength="40" autocomplete="address-level2">
+                            </p>
+                        </div>
+                        <button type="submit" id="zettel-senden" disabled>Bestellung abschicken</button>
+                    </form>
+                    <p id="zettel-meldung" role="status"></p>
+                </aside>
+            </div>
+            <p>Die komplette Karte gibt es hier: <a href="speisekarte.pdf" target="_blank" rel="noopener">Speisekarte als PDF</a> (öffnet in einem neuen Tab).</p>
+            <h3>So bestellst du</h3>
+            <ol>
+                <li>Pizza, Getränk oder Dessert mit + auf den Bestellzettel legen</li>
+                <li>Namen eintragen und Abholung, Lieferung oder Vor Ort wählen</li>
+                <li>Abschicken – die Bestellung landet direkt in Marios Datenbank</li>
+            </ol>
+        </section>
+
+        <section id="oeffnungszeiten">
+            <h2>Öffnungszeiten</h2>
+            <dl>
+                <dt>Montag</dt>
+                <dd>Ruhetag</dd>
+                <dt>Dienstag bis Freitag</dt>
+                <dd>11:30 – 14:00 Uhr und 17:00 – 22:00 Uhr</dd>
+                <dt>Samstag</dt>
+                <dd>12:00 – 23:00 Uhr</dd>
+                <dt>Sonntag und Feiertage</dt>
+                <dd>12:00 – 21:00 Uhr</dd>
+            </dl>
+        </section>
+
+        <section id="anfahrt">
+            <h2>Anfahrt</h2>
+            <p>Sie finden uns in Brooklyn Heights an der Ecke Court Street / Montague Street – zwei Blocks vom Borough Hall entfernt. Mit der Subway: Linien 2, 3, 4, 5 bis Borough Hall, dann 3 Minuten zu Fuß. Parkplätze sind in Brooklyn knapp – kommen Sie lieber mit der Subway oder dem Fahrrad.</p>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Court+Street+Montague+Street+Brooklyn+NY+11201" target="_blank" rel="noopener">Route mit Google Maps planen</a></p>
+            <div id="karte">
+                <button id="karte-laden" type="button">Karte anzeigen (lädt Inhalte von Google Maps)</button>
+            </div>
+        </section>
+
+        <section id="kontakt">
+            <h2>Kontakt</h2>
+            <address>
+                <strong>Mario's Pizza</strong><br>
+                Court Street / Montague Street<br>
+                Brooklyn, NY 11201, USA<br>
+                Telefon: <a href="tel:+17185550192">+1 718 555 0192</a><br>
+                E-Mail: <a href="mailto:info@marios-pizza.nyc">info@marios-pizza.nyc</a>
+            </address>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Mario's Pizza · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="#top">Nach oben</a></p>
+    </footer>
+</body>
+</html>
