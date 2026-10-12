@@ -1,0 +1,34 @@
+<mxfile host="65bd71144e">
+    <diagram id="JcBt-v5yXaB819geLBQh" name="Page-1">
+        <mxGraphModel dx="740" dy="656" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="0YMMWC1aXSKLgVHXEWzy-1" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Artikel" vertex="1">
+                    <mxGeometry height="190" width="190" x="120" y="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="0YMMWC1aXSKLgVHXEWzy-2" parent="0YMMWC1aXSKLgVHXEWzy-1" style="text;strokeColor=#b85450;fillColor=#f8cecc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- artikel_id : int" vertex="1">
+                    <mxGeometry height="26" width="190" y="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="0YMMWC1aXSKLgVHXEWzy-4" parent="0YMMWC1aXSKLgVHXEWzy-1" style="text;strokeColor=#b85450;fillColor=#f8cecc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- name : String" vertex="1">
+                    <mxGeometry height="26" width="190" y="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="0YMMWC1aXSKLgVHXEWzy-5" parent="0YMMWC1aXSKLgVHXEWzy-1" style="text;strokeColor=#b85450;fillColor=#f8cecc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- beschreibung : String" vertex="1">
+                    <mxGeometry height="26" width="190" y="78" as="geometry"/>
+                </mxCell>
+                <mxCell id="0YMMWC1aXSKLgVHXEWzy-6" parent="0YMMWC1aXSKLgVHXEWzy-1" style="text;strokeColor=#b85450;fillColor=#f8cecc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- preis : double" vertex="1">
+                    <mxGeometry height="26" width="190" y="104" as="geometry"/>
+                </mxCell>
+                <mxCell id="0YMMWC1aXSKLgVHXEWzy-3" parent="0YMMWC1aXSKLgVHXEWzy-1" style="line;strokeWidth=1;fillColor=#f8cecc;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#b85450;" value="" vertex="1">
+                    <mxGeometry height="8" width="190" y="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="0YMMWC1aXSKLgVHXEWzy-7" parent="0YMMWC1aXSKLgVHXEWzy-1" style="text;strokeColor=#b85450;fillColor=#f8cecc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ getPreis() : double" vertex="1">
+                    <mxGeometry height="26" width="190" y="138" as="geometry"/>
+                </mxCell>
+                <mxCell id="0YMMWC1aXSKLgVHXEWzy-8" parent="0YMMWC1aXSKLgVHXEWzy-1" style="text;strokeColor=#b85450;fillColor=#f8cecc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ setPreis(preis : double) : void" vertex="1">
+                    <mxGeometry height="26" width="190" y="164" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
