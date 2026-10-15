@@ -5,3 +5,13 @@
 - mehrere Werte: „Mehl Tipo 00, Hefe“ in einer Zelle
 - Widerspruch: Mehlpreis könnte 1,20 und 1,25 lauten
 - Frage: Mehl im September nur von Hand
+
+## Übung 01
+
+| Entität | Attribute |
+| --- | --- |
+| rezept | titel, zubereitungsdauer, schwierigkeit, veroeffentlichungsdatum |
+| kategorie | bezeichnung |
+| zutat | name, einheit |
+| leser | vorname, nachname, email |
+| kommentar | text, sterne |
