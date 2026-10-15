@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.7.17">
+  <diagram name="ER Diagramm" id="ER-Diagramm">
+    <mxGraphModel dx="1680" dy="1160" grid="1" gridSize="10" page="1" pageWidth="1680" pageHeight="1160">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="kategorie" value="&lt;b&gt;kategorie&lt;/b&gt;&lt;hr&gt;PK  kategorie_id&lt;br&gt;bezeichnung" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=15;fillColor=#FFFFFF;strokeColor=#345677;strokeWidth=2;fontSize=22;fontFamily=Consolas;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="70" y="80" width="460" height="128" />
+        </mxCell>
+        <mxCell id="rezept" value="&lt;b&gt;rezept&lt;/b&gt;&lt;hr&gt;PK  rezept_id&lt;br&gt;titel&lt;br&gt;zubereitungsdauer&lt;br&gt;schwierigkeit&lt;br&gt;veroeffentlichungsdatum&lt;br&gt;FK  kategorie_id" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=15;fillColor=#FFFFFF;strokeColor=#345677;strokeWidth=2;fontSize=22;fontFamily=Consolas;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="70" y="350" width="460" height="280" />
+        </mxCell>
+        <mxCell id="leser" value="&lt;b&gt;leser&lt;/b&gt;&lt;hr&gt;PK  leser_id&lt;br&gt;vorname&lt;br&gt;nachname&lt;br&gt;email" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=15;fillColor=#FFFFFF;strokeColor=#345677;strokeWidth=2;fontSize=22;fontFamily=Consolas;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1150" y="80" width="460" height="204" />
+        </mxCell>
+        <mxCell id="kommentar" value="&lt;b&gt;kommentar&lt;/b&gt;&lt;hr&gt;PK  kommentar_id&lt;br&gt;text&lt;br&gt;sterne&lt;br&gt;FK  rezept_id&lt;br&gt;FK  leser_id" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=15;fillColor=#FFFFFF;strokeColor=#345677;strokeWidth=2;fontSize=22;fontFamily=Consolas;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1150" y="450" width="460" height="242" />
+        </mxCell>
+        <mxCell id="zutat" value="&lt;b&gt;zutat&lt;/b&gt;&lt;hr&gt;PK  zutat_id&lt;br&gt;name&lt;br&gt;einheit" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=15;fillColor=#FFFFFF;strokeColor=#345677;strokeWidth=2;fontSize=22;fontFamily=Consolas;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="70" y="870" width="460" height="166" />
+        </mxCell>
+        <mxCell id="rezept_zutat" value="&lt;b&gt;rezept_zutat&lt;/b&gt;&lt;hr&gt;PK,FK  rezept_id&lt;br&gt;PK,FK  zutat_id&lt;br&gt;menge" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=15;fillColor=#FFFFFF;strokeColor=#345677;strokeWidth=2;fontSize=22;fontFamily=Consolas;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="650" y="870" width="390" height="166" />
+        </mxCell>
+        <mxCell id="relation0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#345677;strokeWidth=2;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="kategorie" target="rezept">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="relation1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#345677;strokeWidth=2;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="leser" target="kommentar">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="relation2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#345677;strokeWidth=2;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;exitX=1.0;exitY=0.6071428571428571;entryX=0.0;entryY=0.2892561983471074;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="rezept" target="kommentar">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="relation3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#345677;strokeWidth=2;startArrow=ERmandOne;endArrow=ERoneToMany;startSize=18;endSize=18;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="rezept" target="rezept_zutat">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="300" y="755" />
+              <mxPoint x="845" y="755" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="relation4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#345677;strokeWidth=2;startArrow=ERmandOne;endArrow=ERzeroToMany;startSize=18;endSize=18;exitX=1.0;exitY=0.572289156626506;entryX=0.0;entryY=0.572289156626506;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="zutat" target="rezept_zutat">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Chen Rezept Kommentar" id="Chen-Rezept-Kommentar">
+    <mxGraphModel dx="1680" dy="580" grid="1" gridSize="10" page="1" pageWidth="1680" pageHeight="580">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" value="" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeWidth=2;strokeColor=#345677;" edge="1" parent="1" source="rezept" target="hat">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="c1" value="" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeWidth=2;strokeColor=#345677;" edge="1" parent="1" source="hat" target="kommentar">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="c2" value="" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeWidth=2;strokeColor=#345677;" edge="1" parent="1" source="rezept_id" target="rezept">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="c3" value="" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeWidth=2;strokeColor=#345677;" edge="1" parent="1" source="titel" target="rezept">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="c4" value="" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeWidth=2;strokeColor=#345677;" edge="1" parent="1" source="kommentar_id" target="kommentar">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="c5" value="" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeWidth=2;strokeColor=#345677;" edge="1" parent="1" source="text" target="kommentar">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="c6" value="" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeWidth=2;strokeColor=#345677;" edge="1" parent="1" source="sterne" target="kommentar">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rezept" value="rezept" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E9F0F7;strokeColor=#345677;strokeWidth=2;fontSize=27;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="100" y="270" width="340" height="100" />
+        </mxCell>
+        <mxCell id="kommentar" value="kommentar" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E9F0F7;strokeColor=#345677;strokeWidth=2;fontSize=27;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1240" y="270" width="340" height="100" />
+        </mxCell>
+        <mxCell id="hat" value="hat" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#E9F0F7;strokeColor=#345677;strokeWidth=2;fontSize=27;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="740" y="260" width="200" height="120" />
+        </mxCell>
+        <mxCell id="rezept_id" value="rezept_id" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#345677;strokeWidth=2;fontSize=27;fontStyle=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="70" y="70" width="260" height="70" />
+        </mxCell>
+        <mxCell id="titel" value="titel" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#345677;strokeWidth=2;fontSize=27;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="400" y="100" width="200" height="70" />
+        </mxCell>
+        <mxCell id="kommentar_id" value="kommentar_id" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#345677;strokeWidth=2;fontSize=27;fontStyle=4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1180" y="50" width="340" height="70" />
+        </mxCell>
+        <mxCell id="text" value="text" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#345677;strokeWidth=2;fontSize=27;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1100" y="145" width="180" height="70" />
+        </mxCell>
+        <mxCell id="sterne" value="sterne" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#345677;strokeWidth=2;fontSize=27;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1460" y="140" width="180" height="70" />
+        </mxCell>
+        <mxCell id="one" value="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=27;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="480" y="260" width="40" height="40" />
+        </mxCell>
+        <mxCell id="many" value="n" style="text;html=1;strokeColor=none;fillColor=none;fontSize=27;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1130" y="260" width="40" height="40" />
+        </mxCell>
+        <mxCell id="note" value="Ein Rezept: 0 bis viele Kommentare. Ein Kommentar: genau ein Rezept. Unterstrichen = Primärschlüssel." style="text;html=1;align=left;strokeColor=none;fillColor=none;fontSize=23;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="70" y="460" width="1540" height="60" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
