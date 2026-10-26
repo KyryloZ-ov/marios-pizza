@@ -29,3 +29,29 @@
 | E4 | 09.09.26 | Fratelli Pomodoro | +1 718 555 0303 | Basilikum | 3 | 1,90 | Gemüse |
 
 Primärschlüssel: (`einkauf_nr`, `ware`).
+
+## Übung 06
+
+Grundmodell: preis ist der aktuelle Warenpreis. PK = Primärschlüssel, FK = Fremdschlüssel, UQ = eindeutig.
+
+### 2NF
+
+```text
+einkauf (einkauf_nr [PK], datum, lieferant, telefon)
+ware (ware [PK], preis, warengruppe)
+einkaufsposition (einkauf_nr [PK, FK], ware [PK, FK], menge)
+```
+
+### 3NF
+
+```text
+lieferant (lieferant_id [PK], name, telefon)
+warengruppe (warengruppe_id [PK], bezeichnung)
+ware (ware_id [PK], name, preis, warengruppe_id [FK])
+einkauf (einkauf_id [PK], einkauf_nr [UQ], datum, lieferant_id [FK])
+einkaufsposition (einkauf_id [PK, FK], ware_id [PK, FK], menge)
+```
+
+Vergleich mit Mario: lieferant → kunde; warengruppe → kategorie; ware → artikel; einkauf → bestellung; einkaufsposition → bestellposition.
+
+Historischer Einkaufspreis: einzelpreis zusätzlich in einkaufsposition speichern. Dieser Wert wird beim Einkauf festgehalten und bleibt bei späteren Preisänderungen unverändert. Das Modell bleibt in 3NF.
