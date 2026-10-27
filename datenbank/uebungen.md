@@ -55,3 +55,14 @@ einkaufsposition (einkauf_id [PK, FK], ware_id [PK, FK], menge)
 Vergleich mit Mario: lieferant → kunde; warengruppe → kategorie; ware → artikel; einkauf → bestellung; einkaufsposition → bestellposition.
 
 Historischer Einkaufspreis: einzelpreis zusätzlich in einkaufsposition speichern. Dieser Wert wird beim Einkauf festgehalten und bleibt bei späteren Preisänderungen unverändert. Das Modell bleibt in 3NF.
+
+## Übung 07
+
+- Startbestand: 9 Artikel, 4 Kunden, 4 Bestellungen; Cola hat artikel_id 7.
+- SQL-Musterlösung: `uebung07_musterloesung.sql`; die laufenden eigenen Schritte stehen in `abfragen.sql`.
+- Die Musterlösung setzt einen frisch geladenen Startbestand voraus. Abschnitte der Reihe nach jeweils einmal ausführen.
+- Erwartete neue IDs: Jin Park = kunde_id 5; Panna Cotta = artikel_id 10; Limonade = artikel_id 11; Aishas Bestellung = bestell_id 5.
+- Erwarteter Endstand nach Aufgabe 5: 11 Artikel, 5 Kunden, 5 Bestellungen, 11 Bestellpositionen.
+- Tony Russo bleibt erhalten: Fehler 1451 schützt die referenzielle Integrität, weil Bestellungen auf kunde_id 1 verweisen.
+- Zusatzaufgabe: `CHECK (sterne BETWEEN 1 AND 5)`; 7 Sterne werden unter MariaDB mit Fehler 4025 abgewiesen.
+- Aufgabe 6 und der Test mit 7 Sternen sind absichtliche Fehlertests und werden einzeln ausgeführt.
