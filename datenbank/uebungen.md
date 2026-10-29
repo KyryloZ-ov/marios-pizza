@@ -66,3 +66,13 @@ Historischer Einkaufspreis: einzelpreis zusätzlich in einkaufsposition speicher
 - Tony Russo bleibt erhalten: Fehler 1451 schützt die referenzielle Integrität, weil Bestellungen auf kunde_id 1 verweisen.
 - Zusatzaufgabe: `CHECK (sterne BETWEEN 1 AND 5)`; 7 Sterne werden unter MariaDB mit Fehler 4025 abgewiesen.
 - Aufgabe 6 und der Test mit 7 Sternen sind absichtliche Fehlertests und werden einzeln ausgeführt.
+
+## Übung 08
+
+- Datenbank: `nonnas_blog`; eigene Abfragen: `abfragen_nonna.sql`.
+- Aufgabe 1: alle 6 Rezepte; Titel und Dauer mit `ORDER BY dauer_min DESC` sortieren.
+- Aufgabe 2: `WHERE dauer_min < 45` liefert 3 Rezepte; Kategorie 2 und Schwierigkeit mittel liefern Lasagne und Risotto ai Funghi.
+- Aufgabe 3: `LIKE 'Z%'` findet Zucker und Zucchini; `email IS NULL` findet Luigi Mario; `veroeffentlicht IS NULL` findet Bruschetta.
+- Aufgabe 4: `ORDER BY dauer_min ASC LIMIT 3` liefert Bruschetta (15), Panna Cotta (20), Tiramisu (30 Minuten).
+- Zusatz: `BETWEEN 4 AND 5` liefert 6 Kommentare; `IN (1, 3)` liefert 4 Vorspeisen und Desserts.
+- Alle 10 SELECT-Abfragen wurden gegen die vorhandene MariaDB-Datenbank geprüft.

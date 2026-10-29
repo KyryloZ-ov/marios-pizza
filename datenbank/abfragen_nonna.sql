@@ -28,7 +28,7 @@ WHERE name LIKE 'Z%';
 -- Übung 08, Aufgabe 3b
 SELECT vorname, nachname
 FROM leser
-WHERE emails IS NULL;
+WHERE email IS NULL;
 
 -- Übung 08, Aufgabe 3c
 SELECT titel
@@ -51,4 +51,3 @@ WHERE sterne BETWEEN 4 AND 5;
 SELECT titel
 FROM rezept
 WHERE kategorie_id IN (1, 3);
-
