@@ -151,7 +151,7 @@ WHERE z.name = 'Parmesan'
 ORDER BY rz.menge DESC;
 
 -- Übung 10, Zusatzaufgabe 1
-SELECT r.titel
+SELECT r.titel		
 FROM rezept AS r
 LEFT JOIN kommentar AS k
     ON k.rezept_id = r.rezept_id
@@ -180,4 +180,94 @@ SELECT titel, zutat, menge, einheit
 FROM zutatenliste
 WHERE titel = 'Panna Cotta'
 ORDER BY zutat;
+
+USE nonnas_blog;
+
+-- Übung Z, Aufgabe 1
+SELECT r.titel, k.bezeichnung AS kategorie,
+       COUNT(c.kommentar_id) AS anzahl_kommentare,
+       COALESCE(ROUND(AVG(c.sterne), 1), 0.0) AS bewertung
+FROM rezept AS r
+INNER JOIN kategorie AS k ON k.kategorie_id = r.kategorie_id
+LEFT JOIN kommentar AS c ON c.rezept_id = r.rezept_id
+WHERE r.veroeffentlicht IS NOT NULL
+GROUP BY r.rezept_id, r.titel, k.bezeichnung
+ORDER BY anzahl_kommentare DESC, r.titel ASC;
+
+-- Übung Z, Aufgabe 2
+SELECT z.name, z.einheit,
+       COUNT(DISTINCT rz.rezept_id) AS anzahl_rezepte,
+       SUM(rz.menge) AS gesamtmenge
+FROM zutat AS z
+INNER JOIN rezept_zutat AS rz ON rz.zutat_id = z.zutat_id
+GROUP BY z.zutat_id, z.name, z.einheit
+HAVING COUNT(DISTINCT rz.rezept_id) >= 2
+ORDER BY anzahl_rezepte DESC, z.name ASC;
+
+-- Übung Z, Aufgabe 3
+SELECT CONCAT(l.vorname, ' ', l.nachname) AS lesername,
+       COUNT(*) AS anzahl_kommentare,
+       AVG(c.sterne) AS durchschnitt
+FROM leser AS l
+INNER JOIN kommentar AS c ON c.leser_id = l.leser_id
+GROUP BY l.leser_id, l.vorname, l.nachname
+HAVING COUNT(*) >= 2 AND AVG(c.sterne) >= 4
+ORDER BY durchschnitt DESC, anzahl_kommentare DESC, lesername ASC;
+
+-- Übung Z, Aufgabe 4
+SELECT r.titel, k.bezeichnung AS kategorie, r.dauer_min,
+       COUNT(DISTINCT z.zutat_id) AS anzahl_zutaten,
+       GROUP_CONCAT(z.name ORDER BY z.name SEPARATOR ', ') AS zutatenliste
+FROM rezept AS r
+INNER JOIN kategorie AS k ON k.kategorie_id = r.kategorie_id
+INNER JOIN rezept_zutat AS rz ON rz.rezept_id = r.rezept_id
+INNER JOIN zutat AS z ON z.zutat_id = rz.zutat_id
+WHERE r.dauer_min > 20
+GROUP BY r.rezept_id, r.titel, k.bezeichnung, r.dauer_min
+HAVING COUNT(DISTINCT z.zutat_id) >= 3
+ORDER BY anzahl_zutaten DESC, r.dauer_min ASC;
+
+-- Übung Z, Aufgabe 5
+SELECT k.bezeichnung AS kategorie,
+       COUNT(c.kommentar_id) AS anzahl_kommentare,
+       AVG(c.sterne) AS durchschnitt
+FROM kategorie AS k
+INNER JOIN rezept AS r ON r.kategorie_id = k.kategorie_id
+INNER JOIN kommentar AS c ON c.rezept_id = r.rezept_id
+GROUP BY k.kategorie_id, k.bezeichnung
+HAVING COUNT(c.kommentar_id) >= 2
+ORDER BY durchschnitt DESC
+LIMIT 1;
+
+-- Übung Z, Zusatzaufgabe 1
+SELECT l.vorname, l.nachname
+FROM leser AS l
+LEFT JOIN kommentar AS c ON c.leser_id = l.leser_id
+WHERE c.kommentar_id IS NULL;
+
+-- Übung Z, Zusatzaufgabe 2
+SELECT r.titel, r.dauer_min
+FROM rezept AS r
+WHERE r.dauer_min > (
+    SELECT AVG(r2.dauer_min)
+    FROM rezept AS r2
+    WHERE r2.kategorie_id = r.kategorie_id
+)
+ORDER BY r.rezept_id;
+
+CREATE VIEW rezept_statistik AS
+SELECT r.titel, k.bezeichnung AS kategorie,
+       COUNT(c.kommentar_id) AS anzahl_kommentare,
+       COALESCE(ROUND(AVG(c.sterne), 1), 0.0) AS bewertung
+FROM rezept AS r
+INNER JOIN kategorie AS k ON k.kategorie_id = r.kategorie_id
+LEFT JOIN kommentar AS c ON c.rezept_id = r.rezept_id
+WHERE r.veroeffentlicht IS NOT NULL
+GROUP BY r.rezept_id, r.titel, k.bezeichnung;
+
+SELECT titel, kategorie, anzahl_kommentare, bewertung
+FROM rezept_statistik
+WHERE bewertung > 4
+ORDER BY bewertung DESC, titel ASC;
+
 
