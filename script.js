@@ -37,14 +37,20 @@ const liste = document.getElementById("speisekarte-liste");
 const UEBERSCHRIFT = { "Pizza": "Pizzen", "Getränk": "Getränke", "Dessert": "Desserts" };
 
 async function ladeSpeisekarte() {
-    // TODO Übung 11, Aufgabe 4: Speisekarte aus der Datenbank laden
-    // 1. const antwort = await fetch("api/artikel.php");
-    // 2. Ist antwort.ok falsch: throw new Error("HTTP " + antwort.status);
-    // 3. const daten = await antwort.json();   und dann   speisekarte = daten;
-    // 4. In das Element quelle schreiben: "Speisekarte aus der Datenbank geladen."
-    // 5. Alles in try { … } catch (fehler) { … } – im catch bleiben die Ersatzdaten,
-    //    quelle meldet: "Datenbank nicht erreichbar – Ersatzdaten werden gezeigt."
-    quelle.textContent = "Ersatzdaten aus speisekarte.js – die Datenbank ist noch nicht angebunden (Übung 11).";
+    try {
+        const antwort = await fetch ("api/artikel.php");
+
+        if (!antwort.ok) {
+            throw new Error("HTTP " + antwort.status);
+        }
+
+        const daten = await antwort.json();
+        speisekarte = daten;
+        quelle.textContent = "Speisekarte aus der Datenbank geladen.";
+    } catch (fehler) {
+        quelle.textContent =
+            "Datenbank nicht erreichbar - Ersatzdaten werden gezeigt."
+    }
 }
 
 function zeigeSpeisekarte() {

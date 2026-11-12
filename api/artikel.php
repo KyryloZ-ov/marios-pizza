@@ -14,14 +14,29 @@ $pdo = verbinde();
 //    Die Spalten müssen so heißen (siehe speisekarte.js):
 //    id, name, beschreibung, preis, kategorie
 //    Tipp: "a.artikel_id AS id" benennt eine Spalte um.
-$sql = '...';
+$sql = 'SELECT a.artikel_id as id,
+	        a.name,
+            a.beschreibung,
+            a.preis,
+            k.bezeichnung AS kategorie
+        FROM artikel AS a
+        INNER JOIN kategorie as k
+	        ON a.kategorie_id = k.kategorie_id
+        ORDER BY k.kategorie_id, a.preis ASC, a.artikel_id';
 
 // 2. Führe die Abfrage aus und hole alle Zeilen:
 //    $zeilen = $pdo->query($sql)->fetchAll();
 
+$zeilen = $pdo->query($sql)->fetchAll();
+
 // 3. Aus der Datenbank kommt alles als Text. Wandle in einer foreach-Schleife
 //    id in int und preis in float um: (int) $zeile['id']
 
+foreach ($zeilen as &$zeile) {
+    $zeile['id'] = (int) $zeile['id'];
+    $zeile['preis'] = (float) $zeile['preis'];
+}
+unset($zeile);
 // 4. Schicke das Ergebnis als JSON: antworte(200, $zeilen);
 
-antworte(501, ['fehler' => 'Noch nicht programmiert (Übung 11, Aufgabe 3).']);
+antworte(200, $zeilen);
